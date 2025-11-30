@@ -1,3 +1,4 @@
+-- Active: 1756439513156@@127.0.0.1@3306@auth_db
 -- DATABASE 1: auth_db
 CREATE DATABASE IF NOT EXISTS auth_db;
 USE auth_db;
