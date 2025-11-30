@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Admin Panel</h3>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5>Tambah Kategori</h5>
+        <form method="POST" action="{{ url_for('admin.add_category') }}">
+          <div class="mb-2"><input class="form-control" name="category_name" placeholder="Nama kategori" required></div>
+          <button class="btn btn-primary">Tambah</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5>Tambah Pertanyaan</h5>
+        <form method="POST" action="{{ url_for('admin.add_question') }}">
+          <div class="mb-2">
+            <select class="form-select" name="category_id" required>
+              {% for cid, d in data.items() %}
+                <option value="{{ cid }}">{{ d.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-2"><textarea class="form-control" name="question_text" placeholder="Teks pertanyaan" required></textarea></div>
+          <button class="btn btn-primary">Tambah Pertanyaan</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <h5>Daftar Kategori & Pertanyaan</h5>
+    {% for cid, d in data.items() %}
+      <div class="card mb-2">
+        <div class="card-header d-flex justify-content-between">
+          <strong>{{ d.name }}</strong>
+          <a href="{{ url_for('admin.delete_category', cat_id=cid) }}" class="btn btn-sm btn-danger" onclick="return confirm('Hapus kategori beserta pertanyaannya?')">Hapus</a>
+        </div>
+        <div class="card-body">
+          <ul>
+            {% for q in d.questions %}
+              <li>{{ q[1] }} <a href="{{ url_for('admin.delete_question', q_id=q[0]) }}" class="btn btn-sm btn-outline-danger ms-2">hapus</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<hr />
+<h5>Semua Hasil (Preview)</h5>
+{% if results %}
+  <table class="table table-sm table-bordered">
+    <thead><tr><th>ID</th><th>User</th><th>Stres</th><th>Kecemasan</th><th>Burnout</th><th>Depresi</th><th>Tgl</th></tr></thead>
+    <tbody>
+      {% for r in results %}
+        <tr>
+          <td>{{ r[0] }}</td>
+          <td>{{ r[2] if r|length>2 else r[1] }}</td>
+          <td>{{ r[3] if r|length>3 else r[2] }}</td>
+          <td>{{ r[4] if r|length>4 else r[3] }}</td>
+          <td>{{ r[5] if r|length>5 else r[4] }}</td>
+          <td>{{ r[6] if r|length>6 else r[5] }}</td>
+          <td>{{ r[8] if r|length>8 else r[7] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>Tidak ada hasil.</p>
+{% endif %}
+{% endblock %}

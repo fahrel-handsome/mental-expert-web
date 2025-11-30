@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h4>Hasil Diagnosis</h4>
+
+<div class="alert alert-info p-3">
+    <h5><b>Kesimpulan Utama:</b> {{ results.kesimpulan }}</h5>
+    <p>{{ results.saran_utama }}</p>
+    <small class="text-muted"><i>{{ results.rule }}</i></small>
+</div>
+
+<table class="table table-bordered w-50">
+  <tr><th>Kategori</th><th>Hasil</th></tr>
+  <tr><td>Stres</td><td>{{ results.stres }}</td></tr>
+  <tr><td>Kecemasan</td><td>{{ results.kecemasan }}</td></tr>
+  <tr><td>Burnout</td><td>{{ results.burnout }}</td></tr>
+  <tr><td>Depresi</td><td>{{ results.depresi }}</td></tr>
+</table>
+
+<b>Saran Per Kategori:</b>
+<ul>
+    {% for s in advices %}
+        <li>{{ s }}</li>
+    {% endfor %}
+</ul>
+
+<a class="btn btn-success" href="{{ url_for('user_dashboard') }}">Kembali ke Dashboard</a>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="text-center py-5">
+  <h1 class="display-5">Sistem Pakar: Risiko Kesehatan Mental</h1>
+  <p class="lead">Isi kuesioner cepat (YA/TIDAK) dan dapatkan rekomendasi ringkas.</p>
+  <a href="{{ url_for('questionnaire') }}" class="btn btn-lg btn-success">Mulai Kuesioner</a>
+</div>
+{% endblock %}

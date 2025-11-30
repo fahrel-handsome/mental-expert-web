@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+  <div>
+    <h3>Halo, {{ name }}!</h3>
+    <p>Mulai kuesioner atau lihat riwayat hasilmu di bawah.</p>
+  </div>
+  <div>
+    <a class="btn btn-success" href="{{ url_for('questionnaire') }}">Mulai Kuesioner</a>
+  </div>
+</div>
+
+<hr />
+<h5>Riwayat Hasil</h5>
+{% if results %}
+  <table class="table table-striped">
+    <thead><tr><th>Tgl</th><th>Stres</th><th>Kecemasan</th><th>Burnout</th><th>Depresi</th></tr></thead>
+    <tbody>
+      {% for r in results %}
+        <tr>
+          <td>{{ r[6] }}</td>
+          <td>{{ r[1] }}</td>
+          <td>{{ r[2] }}</td>
+          <td>{{ r[3] }}</td>
+          <td>{{ r[4] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>Tidak ada riwayat hasil.</p>
+{% endif %}
+{% endblock %}

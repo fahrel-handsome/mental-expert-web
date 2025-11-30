@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title">Registrasi</h4>
+        <form method="POST">
+          <div class="mb-3"><input class="form-control" name="nama" placeholder="Nama" required></div>
+          <div class="mb-3"><input class="form-control" name="email" type="email" placeholder="Email" required></div>
+          <div class="mb-3"><input class="form-control" name="password" type="password" placeholder="Password" required></div>
+          <button class="btn btn-primary w-100">Daftar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
