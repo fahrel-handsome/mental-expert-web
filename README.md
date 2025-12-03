@@ -1,6 +1,6 @@
 # Mental Expert Web
 
-Sistem Pakar Diagnosis Kesehatan Mental Berbasis Rule Engine
+Sistem Pakar Diagnosis Kesehatan Mental Berbasis Certainty Factor (CF)
 
 Status: Python 3.8+ | Flask 2.2.5 | MySQL 5.7+ | MIT License
 
@@ -821,22 +821,6 @@ Jika Anda mengalami gejala kesehatan mental yang serius, segera konsultasikan de
 4. MySQL Official Documentation: https://dev.mysql.com/doc/
 5. World Health Organization - Mental Health: https://www.who.int/news-room/fact-sheets/detail/mental-health
 6. Anxiety and Depression Association: https://adaa.org/
-
----
-
-## Catatan Akademik
-
-**Tugas Akhir Semester (UAS)**
-
-- **Mata Kuliah**: Kecerdasan Buatan
-- **Semester**: 3
-- **Tahun Akademik**: 2024/2025
-- **Universitas**: [Universitas Anda]
-- **Program Studi**: [Program Studi Anda]
-
-Laporan lengkap dapat dilihat di file `LAPORAN_UAS.md`.
-
----
 
 ---
 
