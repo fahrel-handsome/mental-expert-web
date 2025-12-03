@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Nov 2025 pada 14.16
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: Dec 03, 2025 at 12:36 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `results`
+-- Table structure for table `results`
 --
 
 CREATE TABLE `results` (
@@ -39,31 +39,33 @@ CREATE TABLE `results` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `results`
+-- Dumping data for table `results`
 --
 
 INSERT INTO `results` (`id`, `user_id`, `stres`, `kecemasan`, `burnout`, `depresi`, `saran`, `created_at`) VALUES
-(16, 1, 'Sedang', 'Sedang', 'Tinggi', 'Sedang', 'Perhatikan istirahat, olahraga ringan, konsultasi bila perlu.', '2025-11-30 13:07:03');
+(16, 1, 'Sedang', 'Sedang', 'Tinggi', 'Sedang', 'Perhatikan istirahat, olahraga ringan, konsultasi bila perlu.', '2025-11-30 13:07:03'),
+(17, 1, 'Tinggi', 'Tinggi', 'Tinggi', 'Sedang', 'Perhatikan istirahat, olahraga ringan, konsultasi bila perlu.', '2025-11-30 13:41:08'),
+(18, 1, 'Rendah', 'Sedang', 'Rendah', 'Rendah', 'Perhatikan istirahat, olahraga ringan, konsultasi bila perlu.', '2025-12-01 03:42:33');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `results`
+-- Indexes for table `results`
 --
 ALTER TABLE `results`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `results`
+-- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

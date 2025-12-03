@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Nov 2025 pada 14.16
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: Dec 03, 2025 at 12:36 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -33,7 +33,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `questions`
+-- Table structure for table `questions`
 --
 
 CREATE TABLE `questions` (
@@ -55,7 +55,7 @@ CREATE TABLE `questions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `questions`
+-- Dumping data for table `questions`
 --
 
 INSERT INTO `questions` (`id`, `category_id`, `question`) VALUES
@@ -80,40 +80,40 @@ INSERT INTO `questions` (`id`, `category_id`, `question`) VALUES
 --
 
 --
--- Indeks untuk tabel `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `questions`
+-- Indexes for table `questions`
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category_id` (`category_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `questions`
+-- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `questions`
+-- Constraints for table `questions`
 --
 ALTER TABLE `questions`
   ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;

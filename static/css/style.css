@@ -1,21 +1,425 @@
+/* ===============================
+   GLOBAL
+================================ */
 body {
-  background: linear-gradient(120deg, #f8fafc 0%, #eef2ff 100%);
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(135deg, #f3f6fb, #e0e7ff);
+    font-family: "Segoe UI", sans-serif;
+    transition: 0.4s;
 }
+
+h1, h2, h3, h4, h5 {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* ===============================
+   NAVBAR GLASS
+================================ */
+.glass-nav {
+    background: rgba(79,70,229,0.75);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.09);
+}
+
+/* ===============================
+   CONTAINER
+================================ */
+.container {
+    margin-top: 30px;
+}
+
+/* ===============================
+   CARD STYLE
+================================ */
 .card {
-  border-radius: 12px;
+    border: none;
+    border-radius: 16px;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.06);
+    transition: .3s;
 }
-.navbar-brand {
-  font-weight: 700;
-  letter-spacing: 0.4px;
+
+.card:hover {
+    transform: translateY(-6px);
 }
+
+.card-title {
+    margin-bottom: 20px;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.btn {
+    border-radius: 12px;
+    padding: 10px 18px;
+    font-weight: 500;
+}
+
 .btn-primary {
-  background: linear-gradient(90deg,#4f46e5,#06b6d4);
-  border: none;
+    background: linear-gradient(135deg, #4f46e5, #3b82f6);
+    border: none;
 }
-.card-header {
-  background: transparent;
+
+.btn-success {
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    border: none;
 }
-.table th, .table td {
-  vertical-align: middle;
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* ===============================
+   FORM INPUT
+================================ */
+.form-control {
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid #dbeafe;
+}
+
+.form-control:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+}
+
+/* ===============================
+   ALERT
+================================ */
+.alert-info {
+    background: #eef4ff;
+    border-left: 5px solid #4f46e5;
+    border-radius: 14px;
+}
+
+/* ===============================
+   TABLE
+================================ */
+.table {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+    color: white;
+}
+
+.table td, .table th {
+    padding: 12px;
+}
+
+.table tbody tr:hover {
+    background: #eef2ff;
+}
+
+/* ===============================
+   LOADER
+================================ */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 7px solid #e0e7ff;
+    border-top: 7px solid #6366f1;
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+body.loaded #loader {
+    display: none;
+}
+
+/* ===============================
+   DARK MODE
+================================ */
+body.dark {
+    background: linear-gradient(135deg, #020617, #1e293b);
+    color: white;
+}
+
+body.dark .card {
+    background: rgba(30,41,59,0.95);
+    color: white;
+}
+
+body.dark .table {
+    background: #1e293b;
+    color: white;
+}
+
+body.dark .form-control {
+    background: #1f2937;
+    color: white;
+    border: 1px solid #334155;
+}
+
+body.dark h1, body.dark h2, body.dark h3, body.dark h4 {
+    color: white;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media(max-width:768px){
+    .d-flex {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .w-50 {
+        width: 100% !important;
+    }
+}
+
+.progress {
+    height: 12px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #e5e7eb;
+}
+
+.progress-bar {
+    border-radius: 20px;
+    font-weight: bold;
+    animation: fill 1s ease;
+}
+
+@keyframes fill {
+  from { width: 0; }
+}
+
+/* ===================================================
+   GLOBAL THEME UPGRADE
+=================================================== */
+body {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    font-family: "Segoe UI", sans-serif;
+    color: #1e293b;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Smooth fade for page */
+body.loaded {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ===================================================
+   GLASS NAVBAR UPGRADE
+=================================================== */
+.glass-nav {
+    background: rgba(79, 70, 229, 0.78);
+    backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    animation: navSlide 0.6s ease;
+}
+
+@keyframes navSlide {
+    from { transform: translateY(-20px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ===================================================
+   CARDS — Neo Glass Modern
+=================================================== */
+.card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+    transform: translateY(0);
+    transition: .35s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+/* ===================================================
+   BUTTONS — Gradient + Hover Motion
+=================================================== */
+.btn {
+    border-radius: 14px;
+    padding: 10px 18px;
+    font-weight: 600;
+    transition: .3s ease-in-out;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981, #22c55e);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+/* Pulse hover effect */
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* ===================================================
+   FORM — Soft Shadow + Smooth Focus
+=================================================== */
+.form-control {
+    border-radius: 14px;
+    padding: 13px;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    transition: .25s;
+}
+
+.form-control:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99,102,241,0.25);
+    background: white;
+    transform: scale(1.01);
+}
+
+/* ===================================================
+   TABLE — Modern Semi Glass
+=================================================== */
+.table {
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+}
+
+.table thead {
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+    transition: .2s;
+}
+
+.table tbody tr:hover {
+    background: #eef2ff;
+    transform: scale(1.01);
+}
+
+/* ===================================================
+   ALERT — Soft Modern
+=================================================== */
+.alert-info {
+    background: #eef4ff;
+    border-left: 6px solid #6366f1;
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+}
+
+/* ===================================================
+   LOADER — Smooth Premium Loader
+=================================================== */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    animation: loaderFade 0.4s ease-out forwards;
+}
+
+@keyframes loaderFade {
+    0% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+.spinner {
+    width: 65px;
+    height: 65px;
+    border: 6px solid #e0e7ff;
+    border-top: 6px solid #6366f1;
+    border-radius: 50%;
+    animation: spin 1s infinite linear, bounce 1.3s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* ===================================================
+   RESPONSIVE POLISH
+=================================================== */
+@media(max-width: 768px){
+    .container { padding: 14px; }
+
+    .btn { width: 100%; }
+
+    .card {
+        padding: 14px;
+    }
+
+    .table {
+        font-size: 14px;
+    }
+}
+
+/* ===============================
+   DAILY AFFIRMATION BOX
+================================ */
+.affirmation-box {
+    max-width: 700px;
+    background: white;
+    padding: 18px 22px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+    border-left: 6px solid #6366f1;
+    font-size: 1.05rem;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
 }

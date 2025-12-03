@@ -1,29 +1,68 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h4>Hasil Diagnosis</h4>
 
-<div class="alert alert-info p-3">
-    <h5><b>Kesimpulan Utama:</b> {{ results.kesimpulan }}</h5>
-    <p>{{ results.saran_utama }}</p>
-    <small class="text-muted"><i>{{ results.rule }}</i></small>
+<div class="container">
+
+    <h3 class="mental-title text-center mb-4">Hasil Diagnosis Kesehatan Mental</h3>
+
+    <!-- === CARD KESIMPULAN === -->
+    <div class="card p-4 mb-4 shadow-sm" style="background: linear-gradient(135deg,#eef2ff,#e0e7ff); border-left: 6px solid #6366f1;">
+        <h5 class="mb-2"><b>Kesimpulan Utama</b></h5>
+        <h4 class="text-primary">{{ results.kesimpulan }}</h4>
+        <p class="mt-2">{{ results.saran_utama }}</p>
+        <small class="text-muted"><i>Rule: {{ results.rule }}</i></small>
+    </div>
+
+    <!-- === TABEL HASIL === -->
+    <div class="card p-4 shadow-sm mb-4">
+        <h5 class="mb-3"><b>Detail Kondisi Anda</b></h5>
+        <table class="table table-hover table-healing">
+            <thead>
+                <tr>
+                    <th>Kategori</th>
+                    <th>Hasil</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Stres</td>
+                    <td><span class="badge bg-primary p-2">{{ results.stres }}</span></td>
+                </tr>
+                <tr>
+                    <td>Kecemasan</td>
+                    <td><span class="badge bg-warning p-2 text-dark">{{ results.kecemasan }}</span></td>
+                </tr>
+                <tr>
+                    <td>Burnout</td>
+                    <td><span class="badge bg-danger p-2">{{ results.burnout }}</span></td>
+                </tr>
+                <tr>
+                    <td>Depresi</td>
+                    <td><span class="badge bg-success p-2">{{ results.depresi }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- === SARAN === -->
+    <div class="card-healing fade-in">
+        <h5 class="mb-3"><b>Saran untuk Anda</b></h5>
+        <ul class="list-group">
+            {% for s in advices %}
+                <li class="list-group-item d-flex align-items-center">
+                    <span class="badge bg-success me-3">✔</span> {{ s }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- BUTTON -->
+    <div class="text-center">
+        <a class="btn-healing" href="{{ url_for('user_dashboard') }}">Kembali ke Dashboard</a>
+        </a>
+    </div>
+
 </div>
-
-<table class="table table-bordered w-50">
-  <tr><th>Kategori</th><th>Hasil</th></tr>
-  <tr><td>Stres</td><td>{{ results.stres }}</td></tr>
-  <tr><td>Kecemasan</td><td>{{ results.kecemasan }}</td></tr>
-  <tr><td>Burnout</td><td>{{ results.burnout }}</td></tr>
-  <tr><td>Depresi</td><td>{{ results.depresi }}</td></tr>
-</table>
-
-<b>Saran Per Kategori:</b>
-<ul>
-    {% for s in advices %}
-        <li>{{ s }}</li>
-    {% endfor %}
-</ul>
-
-<a class="btn btn-success" href="{{ url_for('user_dashboard') }}">Kembali ke Dashboard</a>
 
 {% endblock %}
